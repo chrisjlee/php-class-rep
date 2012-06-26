@@ -1,6 +1,6 @@
 <?php
 /**
- *  Created a PDO for each atrium representative
+ *  Created a PDO for each Representative
  *  
  */
  
