@@ -1,41 +1,47 @@
 <?php
 require_once 'PHPUnit/Autoload.php';
-require_once(dirname(__FILE__). '/class.rep.php');
+require_once(dirname(__FILE__) . '/../libs/class.rep.php');
 
 /** @TODO assert that if i don't set the value
  *  it'll throw the correct exception
  */
 class classRepTest extends PHPUnit_Framework_TestCase {
-  public function setUp() {}
-  public function tearDown() {}
+  protected $_testRep = null;
+  
+  public function setUp() 
+  {
+    // Create a new atrium rep object
+    $this->_testRep = new Rep();
+  }
+  public function tearDown() 
+  {
+    unset($this->_testRep);
+  }
   public function testRepNameNull()
   {
-    $alfredRep = new Rep();
     // Newly formed assert object shouldn't contain anything
-    $this->assertEquals($alfredRep ->getName(), null);
+    $this->assertEquals($this->_testRep->getName(), null);
   }
   public function testRepEmailNull()
   {
-    // Create a new atrium rep object
-    $alfredRep = new Rep();
     // Newly formed assert object shouldn't contain anything
-    $this->assertEquals($alfredRep ->getEmail(), null);
+    $this->assertEquals($this->_testRep->getEmail(), null);
   }
-  public function testRepGetName()
+  public function testRepGetSetName()
   {
     // Set test name to 'alfred'
-    $name = 'alfred';
-    $alfredRep = new Rep($name);
-    $this->assertEquals($alfredRep->getName(), 'alfred');
+    $this->_testRep->setName('alfred');
+    $this->assertEquals($this->_testRep->getName(), 'alfred');
   }
-  public function testRepGetEmail() {
-    // Set test name to 'alfred'
-    $name = 'alfred';
-    // Set an email
-    $email = "$name@enewman.com";
-    // Create a new atrium rep object
-    $alfredRep = new Rep($name, $email);
-    // assert that atrium rep's name is alfred
-    $this->assertEquals($alfredRep ->getEmail(), 'alfred@enewman.com');
+  public function testRepGetSetEmail()
+  {
+    // Set test Email to 'eNew@man.com'
+    $this->_testRep->setEmail('alfred@enewman.com');
+    $this->assertEquals($this->_testRep->getEmail(), 'alfred@enewman.com');
   }
+  // public function testRepEmailGetSetEmail() {
+    // // assert that atrium rep's name is alfred
+    // $this->_testRep->setRegionEmail('infoeast@enewman.com');
+    // $this->assertEquals($this->_testRep ->getRegionEmail(), 'infoeast@enewman.com');
+  // }
 }
