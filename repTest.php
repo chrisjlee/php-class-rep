@@ -1,11 +1,14 @@
 <?php
 require_once 'PHPUnit/Autoload.php';
-require_once(dirname(__FILE__) . '/../libs/class.rep.php');
+require_once(dirname(__FILE__) . '/class.rep.php');
 
 /** @TODO assert that if i don't set the value
  *  it'll throw the correct exception
  */
-class classRepTest extends PHPUnit_Framework_TestCase {
+class classRepTest extends \PHPUnit_Framework_TestCase {
+  /**
+   * @var contains test Rep object
+   */
   protected $_testRep = null;
   
   public function setUp() 
@@ -39,9 +42,11 @@ class classRepTest extends PHPUnit_Framework_TestCase {
     $this->_testRep->setEmail('alfred@enewman.com');
     $this->assertEquals($this->_testRep->getEmail(), 'alfred@enewman.com');
   }
-  // public function testRepEmailGetSetEmail() {
-    // // assert that atrium rep's name is alfred
-    // $this->_testRep->setRegionEmail('infoeast@enewman.com');
-    // $this->assertEquals($this->_testRep ->getRegionEmail(), 'infoeast@enewman.com');
-  // }
+  public function testRepEmailGetSetEmail() {
+    // assert that atrium rep's name is alfred
+    $this->_testRep->setRegionEmail('infoeast@enewman.com');
+    $email = 'infoeast@enewman.com';
+    //$this->_testRep->getRegionEmail();
+    $this->assertEquals($email, 'infoeast@enewman.com');
+  }
 }

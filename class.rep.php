@@ -6,24 +6,24 @@
 class Rep
 {
   /**
-   * @var $name 
-   *  String of the name of the representative
+   * String of the name of the representative
+   *  @var $name 
    */
   static public $name = null;
   /**
-   * @var $email 
-   *  String of the person's email address
+   * String of the person's email address
+   *  @var $email 
    */
   static public $email = null;
+  /**
+   * Array of regions where the rep is responsible for
+   *  @var $regions
+   */
+  static public $regions = array();
   
   /**
-   * @var $regions 
    *  Array of states or regions the person is responsible for
-  */
-  static public $regions = array();
-  /*
-   * @var $regionEmail 
-   *  Array of states or regions the person is responsible for
+   *    @var $regionEmail 
    */
   static public $regionEmail = null;
   
@@ -32,17 +32,16 @@ class Rep
    */
   public function __construct($name=null, $email=null, $regionEmail=null, $regions=null) 
   {
-    $args = array($name, $email, $regionEmail, $regions);
+    //$args = array($name, $email, $regionEmail, $regions);
     //$this->_raiseArrayException($args);
-    
-    // Initialize protected static values
+    // Initialize static values
     self::$name = $name;
     self::$email = $email;
     self::$regions = $regions;
     self::$regionEmail = $regionEmail;
   }
   /**
-   * @TODO
+   * @param $email contains email address
   */
   public function setEmail($email) {
     return self::$email = $email;
@@ -52,12 +51,6 @@ class Rep
   */
   public function getEmail() {
     return self::$email;
-  }
-  /**
-   * @TODO
-   */
-  public function getRep() {
-    return $this;
   }
   /**
    * @param $name Representative name 
@@ -73,18 +66,12 @@ class Rep
   }
   /**
    * Each region has their own seperate email
-   *  e.g. infoeast@atrium.com, infocentral@atrium.com
+   * @param $regionEmail  Email for the general region
+   *    e.g. infoeast@atrium.com, infocentral@atrium.com
    */
-  public function setRegionEmail ($email) 
+  public function setRegionEmail($regionEmail) 
   {
-    return self::$regionEmail($email);
-  }
-  /**
-  * @var $email
-  */
-  public function getRegionEmail($email) 
-  {
-    return self::$regionEmail;
+    return self::$regionEmail($regionEmail); 
   }
   /**
   * @var $regions
@@ -100,8 +87,17 @@ class Rep
   {
     return self::$regions = $regions;
   }
-  public function getAjaxResponse() {
-    echo '';
+  /**
+  * @return Rep Object
+  */
+  public function getRep() {
+    return $this;
+  }
+  /**
+   * @TODO
+   */
+  public function createAjaxResponse() {
+    //echo '';
   }
   /**
    * @var $args
