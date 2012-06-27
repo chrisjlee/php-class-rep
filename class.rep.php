@@ -16,20 +16,26 @@ class Rep
    *  String of the person's email address
    */
   static public $email = null;
+  /**
+   * @var $regions
+   *  Array of regions where the rep is responsible for
+  */
+  static public $regions = array();
   
   /** 
    * Constructor
    */
-  public function __construct($name=null, $email=null) 
+  public function __construct($name=null, $email=null, $regions=null) 
   {
     $args = array($name, $email);
     
     // Initialize protected static values
     self::$name = $name;
     self::$email = $email;
+    self::$regions = $regions;
   }
   /**
-   * 
+   * Get representative's email
    */
   public function getEmail() {
     return self::$email;
@@ -69,12 +75,14 @@ class Rep
 /**
  * Atrium representative
  */
+/*
+
+@TODO child class not needed should be created in base class
+
+
 class atriumRep extends Rep 
 {
-  /**
-   * @var $regions 
-   *  Array of states or regions the person is responsible for
-   */
+
   static protected $regions = array();
   static protected $regionEmail;
   
@@ -87,3 +95,4 @@ class atriumRep extends Rep
     return $regionEmail($email);
   }
 }
+*/
